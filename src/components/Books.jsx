@@ -1,27 +1,43 @@
 import React, { useState } from "react";
 import { books } from "../constants/mockData";
 import BookCard from "./BookCard";
-
-
-
-const handleLikedList = (book, status) => {
-
-const [liked, setLiked] = useState([]);
-
-if (status) {
-    const newLikedList = liked.filter((i)=> i.id !== book.id);
-    setLiked(newLikedList);
-}
-else {
-    setLiked((liked) => [...liked, book]);
-}
-};
+import SideCard from "./SideCard";
+import styles from "./Books.module.css"
 
 const Books = () => {
+
+    const [liked, setLiked] = useState([]);
+
+    const handleLikedList = (book, status) => {
+        
+        if (status) {
+            const newLikedList = liked.filter((i)=> i.id !== book.id);
+            setLiked(newLikedList);
+        }
+        else {
+            setLiked((liked) => [...liked, book]);
+        }
+        };
     return(
-        <>
-        {books.map( (book) => (<BookCard key={book.id} data={book} handleLikedList={handleLikedList}/>))}
-        </>
-    )
+    <div className={styles.container}>
+       <div className={styles.cards}>
+        {books.map((book) => (
+        <BookCard 
+        key={book.id} 
+        data={book} 
+        handleLikedList={handleLikedList}
+        />
+        ))}
+       </div>
+       { !! liked.length && (
+       <div className={styles.favorite}>
+        <h4>favorite</h4>
+       {liked.map((book) =>(
+         <SideCard key={book.id} data={book}/>
+         ))}
+         </div>
+         )}
+       </div>
+    );
 }
 export default Books;
