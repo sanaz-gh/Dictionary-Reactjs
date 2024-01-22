@@ -4,7 +4,7 @@ const Layout = ({children}) => {
   return (
     <>
       <header className={styles.header}>
-        <p><a href="#">Botostart</a> | botostart full course </p>
+        <p><a href="#"> Dictionary Books App </a> | Using Search Box </p>
       </header>
       {children}
       <footer className={styles.footer}><p>
