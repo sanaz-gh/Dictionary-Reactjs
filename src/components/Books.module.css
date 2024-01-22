@@ -11,4 +11,8 @@
     padding: 15px;
     background-color: #6552f4;
     border-radius: 10px;
+    margin-left: 20px;
+}
+.favorite h4 {
+    font-size: 1.2rem;
 }
